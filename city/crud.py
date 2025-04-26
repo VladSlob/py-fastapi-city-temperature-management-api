@@ -16,10 +16,7 @@ async def create_city(db: AsyncSession, city: schemas.CreateCity):
     query = insert(models.City).values(
         name=city.name,
         additional_info=city.additional_info
-    )
-    result = await db.execute(query)
-    await db.commit()
-    resp = {**city.dict(), "id": result.inserted_primary_key}
+
     return resp
 
 
